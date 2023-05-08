@@ -25,7 +25,7 @@ const dateRange = function dateRange(date = Date()) {
 
   return {
     realtime() {
-      const realtimeFormat = format + 'HH';
+      const realtimeFormat = `${format}HH`;
       const startDate = dateObj;
       const endDate = dateObj;
       return {
@@ -120,11 +120,18 @@ function extractChart(htmlText, xpath) {
   const songTitles = $(xpath.songTitles).map(trimText).get();
   const artistNames = $(xpath.artistNames).map(trimText).get();
   const albumNames = $(xpath.albumNames).map(trimText).get();
+  const albumCovers = $(xpath.albumCovers).map((i, el) => $(el).attr('src')).get();
+  const albumIds = $(xpath.albumIds).map((i, el) => $(el).attr('href')).get();
+  const songIds = $(xpath.dataSongNo).map((i, el) => $(el).attr('data-song-no')).get();
   return songTitles.map((el, i) => ({
     rank: (i + 1).toString(),
     title: el,
     artist: artistNames[i],
     album: albumNames[i],
+    // eslint-disable-next-line no-script-url
+    albumId: albumIds[i].replace("javascript:melon.link.goAlbumDetail('", '').replace("');", ''),
+    albumCover: albumCovers[i],
+    songId: songIds[i],
   }));
 }
 

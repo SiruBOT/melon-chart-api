@@ -43,4 +43,4 @@ function Melon(date, options) {
   };
 }
 
-module.exports = Melon;
+module.exports = { Melon };

@@ -14,6 +14,9 @@ const XPATH = {
   songTitles: '.wrap_song_info .rank01 span a',
   artistNames: '.wrap_song_info .rank02 span',
   albumNames: '.wrap_song_info .rank03 a',
+  albumCovers: '.image_typeAll  img',
+  albumIds: '.image_typeAll',
+  dataSongNo: 'tbody tr',
 };
 const MESSAGE_FN = function MESSAGE_FN() {
   console.log('no messageFn is provied');
